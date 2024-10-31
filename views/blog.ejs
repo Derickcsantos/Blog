@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars home"></i>
+        <h1>Blog do GUGU</h1>
+        <nav>
+            <button onclick="location.href='/'"><i class="fas fa-users-cog"></i></button>
+        </nav>
+    </header>
+    <main>
+        <div class="post-container">
+            <% posts.forEach(post => { %>
+                <div class="post">
+                    <% if (post.media) { %>
+                        <div class="post-image">
+                            <img src="<%= post.media %>" alt="<%= post.title %>">
+                        </div>
+                    <% } %>
+                    <div class="post-content">
+                        <h2><%= post.title %></h2>
+                        <p><%= post.description %></p>
+                        <p><%= post.content %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        
+        <div class="pagination">
+            <!-- Aqui você pode adicionar botões de paginação se necessário -->
+        </div>
+    </main>
+</body>
+</html>

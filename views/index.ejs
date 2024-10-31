@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area administrativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars home"></i>
+        <h1>Área administrativa</h1>
+        <nav>
+            <button class="back" onclick="location.href='/blog'"><i class="fas fa-home"></i></button>
+        </nav>
+    </header>
+    <main>
+        <h2>Criar Novo Post</h2>
+        <form id="postForm" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Título" required>
+            <input type="text" name="description" placeholder="Descrição" required>
+            <textarea name="content" placeholder="Conteúdo" required></textarea>
+            <input type="file" name="media" accept="image/*">
+            <button type="submit">Adicionar Post</button>
+        </form>
+        <div id="notification" class="notification"></div>
+
+        <div class="exclusaoBox">
+            <div class="displayColumn">
+                <h2>Posts Existentes</h2>
+                <button class="accordion-button" onclick="toggleAccordion()"><i class="fas fa-trash-alt"></i></button>
+            </div>
+            <div class="displayRow">
+                <ul id="postList">
+                    <% posts.forEach(post => { %>
+                        <li>
+                            <h3><%= post.title %></h3>
+                            <p><%= post.description %></p>
+                            <button class="excluirBtn" onclick="deletePost('<%= post._id %>')">Excluir</button>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+        
+    </main>
+
+    <script>
+        const form = document.getElementById('postForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/posts', {
+                method: 'POST',
+                body: formData,
+            });
+            const result = await response.json();
+            showNotification(result.message);
+            form.reset(); // Reseta o formulário após o envio
+        });
+
+        // Função para deletar um post
+        async function deletePost(postId) {
+            if (confirm('Tem certeza que deseja excluir este post?')) {
+                const response = await fetch(`/posts/${postId}`, {
+                    method: 'DELETE',
+                });
+
+                const result = await response.json();
+                showNotification(result.message);
+
+                // Atualizar a lista de posts após a exclusão
+                if (response.ok) {
+                    location.reload(); // Atualiza a página para remover o post excluído
+                }
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                    notification.style.opacity = '1';
+                }, 500);
+            }, 3000);
+        }
+
+
+        function toggleAccordion() {
+        const postList = document.getElementById('postList');
+        postList.style.display = postList.style.display === 'none' || postList.style.display === '' ? 'block' : 'none';
+        }
+
+    </script>
+</body>
+</html>
