@@ -48,10 +48,65 @@ nav button:hover {
 
 .home{
     position: absolute;
+    color: #fff;
     top: 2%;
     left: 5%;
     font-size: 40px;
 }
+
+/* Estilos para a sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fcfcfc;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 999;
+    color: white;
+}
+
+/* Estilos para o botão de fechar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Conteúdo da sidebar */
+.sidebar h2 {
+    margin-left: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 20px;
+}
+
+.sidebar ul li a {
+    font-size: 36px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ccc;
+}
+
+
 
 /* Estilização do conteúdo principal */
 main {
@@ -151,40 +206,41 @@ form button:hover {
     border-radius: 20px;
     color: #fff;
     background-color: #d11313;
+    border: 1px solid #ccc;
     cursor: pointer;
     padding: 5px 10px;
 }
 
-.exclusaoBox{
+.exclusaoBox {
     background-color: #f5f5f5;
     border-radius: 20px;
     margin: 40px 0 0 0;
     width: 100%;
+    padding: 20px;
 }
 
-.exclusaoBox h2{
+.displayColumn {
     display: flex;
-    text-align: center;
-    justify-content: center;
-    width: 0;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.exclusaoBox h2 {
+    text-align: left;
+    margin: 0;
+    font-size: 20px;
 }
 
 .accordion-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+    font-size: 24px;
+    background-color: transparent;
     border: none;
     cursor: pointer;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.displayColumn{
+    color: #333;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .displayRow{
@@ -196,29 +252,17 @@ form button:hover {
 }
 
 #postList {
-    display: flex; /* Alinha os itens do #postList em linha */
+    display: none; /* Alinha os itens do #postList em linha */
     flex-wrap: wrap;
     gap: 10px;
     width: 100%;
     list-style: none;
     padding: 0;
-    margin: 0;
-}
-
-.accordion-button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 10px;
+    margin: 50px 0 0 0;
 }
 
 #postList li {
-    border: 1px solid #007bff;
+    border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 5px;
     background-color: #f1f1f1;  
@@ -282,3 +326,4 @@ form button:hover {
         font-size: 1.7rem;
     }
 }
+

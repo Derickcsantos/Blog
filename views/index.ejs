@@ -9,7 +9,17 @@
 </head>
 <body>
     <header>
-        <i class="fas fa-bars home"></i>
+        <div id="sidebar" class="sidebar">
+            <button class="close-btn" onclick="toggleSidebar()">×</button>
+            <h2>Gugu Talkshow</h2>
+            <ul>
+                <li><a href="https://gugutalkshoww.vercel.app/">Home</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+            </ul>
+        </div>
+        
+        <button onclick="toggleSidebar()"><i class="fas fa-bars home"></i></button>
         <h1>Área administrativa</h1>
         <nav>
             <button class="back" onclick="location.href='/blog'"><i class="fas fa-home"></i></button>
@@ -29,7 +39,7 @@
         <div class="exclusaoBox">
             <div class="displayColumn">
                 <h2>Posts Existentes</h2>
-                <button class="accordion-button" onclick="toggleAccordion()"><i class="fas fa-trash-alt"></i></button>
+                <button class="accordion-button" onclick="toggleAccordion()"><i class="fas fa-chevron-down"></i></button>
             </div>
             <div class="displayRow">
                 <ul id="postList">
@@ -37,7 +47,7 @@
                         <li>
                             <h3><%= post.title %></h3>
                             <p><%= post.description %></p>
-                            <button class="excluirBtn" onclick="deletePost('<%= post._id %>')">Excluir</button>
+                            <button class="excluirBtn" onclick="deletePost('<%= post._id %>')"><i class="fas fa-trash-alt"></i></button>
                         </li>
                     <% }) %>
                 </ul>
@@ -93,7 +103,13 @@
 
         function toggleAccordion() {
         const postList = document.getElementById('postList');
-        postList.style.display = postList.style.display === 'none' || postList.style.display === '' ? 'block' : 'none';
+        postList.style.display = postList.style.display === 'none' || postList.style.display === '' ? 'flex' : 'none';
+        }
+
+
+        function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
         }
 
     </script>
