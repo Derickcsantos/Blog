@@ -178,27 +178,84 @@ form button:hover {
     background-color: #4e36da;
 }
 
-.post{
+/* Estilos gerais para os posts */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 10px;
+}
+
+.post {
     border: 1px solid #ccc;
-    margin: 0 7px 70px 7px;
     border-radius: 20px;
+    overflow: hidden;
+    margin: 0 7px 40px 7px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-#postForm{
-    margin: 40px 0 0 0;
+.post:hover {
+    transform: translateY(-5px);
 }
 
-.post-content h2{
-    color: #333;
-    text-decoration: underline;
+.post-image img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.post-content {
+    padding: 20px;
+    position: relative;
+}
+
+/* Botão de like */
+.like-button {
+    background: transparent;
+    border: none;
+    color: red; /* Cor do ícone de like (Instagram pink) */
     font-size: 40px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 30px;
 }
 
-.post-content p{
-    font-size: 18px;
-    margin: 20px 5px 30px 5px;
+.like-button:hover {
+    color: #c13584; 
 }
+
+/* Contador de likes */
+.like-count {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Título e conteúdo do post */
+.post-content h2 {
+    color: #4829f9;
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:23px 0 18px 0;
+}
+
+.post-content p {
+    font-size: 30px;
+    margin: 10px 0 15px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+
 
 .excluirBtn{
     width: 20%;

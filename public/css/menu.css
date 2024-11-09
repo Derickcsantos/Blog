@@ -1,0 +1,94 @@
+/* Estilos básicos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#content {
+    padding: 20px;
+}
+
+/* Estilo do ícone do menu */
+.menu-icon {
+    font-size: 30px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Estilos para a sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 12px;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Botão para fechar a sidebar */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Estilos para o conteúdo principal */
+.content {
+    transition: margin-left .3s;
+    padding: 20px;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}

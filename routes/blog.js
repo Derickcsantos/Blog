@@ -17,12 +17,11 @@ const upload = multer({ storage: storage });
 
 // Rota para criar post
 router.post('/', upload.single('media'), async (req, res) => {
-    const { title, description, content } = req.body;
+    const { title, content } = req.body;
     const media = req.file ? req.file.filename : null; // Nome do arquivo de mídia
 
     const newPost = new Post({
         title,
-        description,
         content,
         media, // Salva o nome do arquivo de mídia
     });

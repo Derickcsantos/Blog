@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Incluindo o reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Incluindo a API do VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <style>
+        /* Resetando o estilo padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Container do formulário */
+.login-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 40px; /* Espaço para o ícone */
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Estilizando os campos de input */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    font-size: 1.1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+}
+
+/* Estilo para o campo de senha com ícone */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: calc(100% - 40px);
+}
+
+.password-wrapper button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.password-wrapper button:hover {
+    color: #007bff;
+}
+
+.password-container {
+position: relative;
+width: 100%;
+}
+
+.password-container input {
+padding-right: 40px; /* Espaço para o ícone */
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: #949393;
+}
+
+/* Botão de submit */
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilizando o reCAPTCHA */
+.recaptcha-container {
+    margin-top: 1.5rem;
+}
+
+.g-recaptcha{
+    margin-bottom: 1rem;
+}
+
+/* Hover nos inputs */
+.input-group input:hover {
+    border-color: #007bff;
+}
+
+.backIcon{
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    color: #1d79cf;
+    font-size: 40px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <button onclick="location.href='/'"><i class="fas fa-arrow-circle-left backIcon"></i></button>
+        <!-- Formulário de login -->
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                        <i class="fas fa-eye eye-icon" id="togglePassword"></i> <!-- Ícone de olho fechado -->
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="6Lfh7XkqAAAAAJ5P_DC7uspEkgQH14XGpTLfh70P"></div>
+            </div>
+
+            <!-- Botão de login -->
+            <button type="submit">Entrar</button>
+        </form>
+
+        <!-- Inclusão do VLibras -->
+
+    </div>
+
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', () => {
+            // Alterna entre tipo 'password' e 'text'
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            
+            // Alterna o ícone de olho
+            togglePassword.classList.toggle('fa-eye');
+            togglePassword.classList.toggle('fa-eye-slash');
+
+       
+    });
+});
+
+    </script>
+</body>
+</html>
