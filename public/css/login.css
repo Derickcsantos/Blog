@@ -31,6 +31,17 @@ h1 {
     max-width: 400px;
 }
 
+input {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 40px; /* Espaço para o ícone */
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
 /* Estilizando os campos de input */
 .input-group {
     margin-bottom: 1.5rem;
@@ -76,26 +87,40 @@ h1 {
     color: #333;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Efeito de animação ao clicar no ícone do olho */
-.password-wrapper button:active {
-    transform: translateY(-50%) scale(0.95);
 }
 
 .password-wrapper button:hover {
     color: #007bff;
 }
 
+.password-container {
+position: relative;
+width: 100%;
+}
+
+.password-container input {
+padding-right: 40px; /* Espaço para o ícone */
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: #949393;
+}
+
 /* Botão de submit */
 button[type="submit"] {
     width: 100%;
     padding: 1rem;
-    background-color: #007bff;
+    background-color: #4829f9;
     border: none;
     border-radius: 5px;
     color: white;
+    font-weight: 600;
     font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -110,9 +135,21 @@ button[type="submit"]:hover {
     margin-top: 1.5rem;
 }
 
+.g-recaptcha{
+    margin-bottom: 1rem;
+}
+
 /* Hover nos inputs */
 .input-group input:hover {
     border-color: #007bff;
+}
+
+.backIcon{
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    color: #1d79cf;
+    font-size: 40px;
 }
 
 /* Responsividade */

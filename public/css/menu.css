@@ -23,21 +23,31 @@ body {
 }
 
 /* Estilos para a sidebar */
+/* Sidebar escondida por padrão */
 .sidebar {
     height: 100%;
     width: 0;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #fff;
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
     z-index: 1000;
+    
 }
 
+/* Sidebar visível quando adicionada a classe "open" */
+.sidebar.open {
+    width: 250px;
+    display: block;
+}
+
+
 .sidebar h2 {
-    color: white;
+    color: #333;
+    font-weight: 800;
     text-align: center;
 }
 
@@ -52,7 +62,8 @@ body {
 }
 
 .sidebar ul li a {
-    color: white;
+    color: #333;
+    font-weight: 600;
     text-decoration: none;
     font-size: 18px;
     display: block;
@@ -61,7 +72,8 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: #575757;
+    background-color: #4829f9;
+    color: #fff;
 }
 
 /* Botão para fechar a sidebar */
@@ -82,13 +94,8 @@ body {
     padding: 20px;
 }
 
-/* Responsividade */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 250px;
-    }
+.close{
+    color: red;
 
-    .content {
-        margin-left: 0;
-    }
 }
+

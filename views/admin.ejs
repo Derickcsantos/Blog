@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <meta name="robots" content="index,follow">	
+    <meta name="description" content="Conteudo inovador e dinâmico com muito entretenimento. Desde o seu lançamento,
+    temos expandido nossa presença nas principais redes sociais, como Instagram, Youtube e TikTok, trazendo conteúdo diversificado e de alta qualidade!">
+    <meta name="keyword" content="TalkShow, Diversão, Conteúdo, Rede social, Inovação, Blog, criação, criação de conteudo, passar tempo">
+    <meta name="author" content=" Dérick campos santos, Derick, Dking">
+    <meta name="language" content="pt-BR">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="generator" content="Visual studio code">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"> <!-- Evitar cache -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta property="og:title" content="Blog do gugutalkshow">
+    <meta property="og:url" content="https://gugutalkshoww.vercel.app/">
     <title>Area administrativa</title>
+    <link rel="icon" href="/Imagens/logoBranca (1).jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/public/css/menu.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/responsividade.css">
+    <link rel="stylesheet" href="/css/post.css">
 </head>
 <body>
     <header>
     
-        <!-- Sidebar -->
         <div id="sidebar" class="sidebar">
             <button class="menu-icon" onclick="toggleSidebar()">
-                <i class="fas fa-bars">xx</i>
+                <i class="fas fa-times close"></i>
             </button>
             <h2>Menu</h2>
             <ul>
                 <li><a href="#">Início</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
                 <li><a href="#">Contato</a></li>
+                <li><a href="#">Nos siga</a></li>
             </ul>
         </div>
         
@@ -119,15 +138,21 @@
         postList.style.display = postList.style.display === 'none' || postList.style.display === '' ? 'flex' : 'none';
         }
 
-        // Função para abrir e fechar o sidebar
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar.style.width === '250px') {
-            sidebar.style.width = '0';
-        } else {
-            sidebar.style.width = '250px';
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                setTimeout(() => {
+                    sidebar.style.display = 'none'; // Esconde completamente após a transição
+                }, 300); // Tempo de espera para coincidir com a transição
+            } else {
+                sidebar.style.display = 'block'; // Mostra antes de iniciar a transição
+                setTimeout(() => {
+                    sidebar.classList.add('open');
+                }, 10); // Pequeno atraso para garantir o efeito de transição
+            }
         }
-    }
+
 
 
     </script>

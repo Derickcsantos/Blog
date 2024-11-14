@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Blog</title>
+    <meta name="robots" content="index,follow">	
+    <meta name="description" content="Conteúdo inovador e dinâmico com muito entretenimento. Desde o seu lançamento,
+    temos expandido nossa presença nas principais redes sociais, como Instagram, YouTube e TikTok, trazendo conteúdo diversificado e de alta qualidade!">
+    <meta name="keyword" content="TalkShow, Diversão, Conteúdo, Rede social, Inovação, Blog, criação, criação de conteúdo, passar tempo">
+    <meta name="author" content="Dérick Campos Santos, Derick, Dking">
+    <meta name="language" content="pt-BR">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="generator" content="Visual Studio Code">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <meta property="og:title" content="Blog do gugutalkshow">
+    <meta property="og:url" content="https://gugutalkshoww.vercel.app/">
+    <title>Blog do Gugu</title>
+    <link rel="icon" href="/Imagens/logoBranca (1).jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/public/css/menu.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/responsividade.css">
+    <link rel="stylesheet" href="/css/post.css">
+
 </head>
 <body>
     <header>
-        <!-- Sidebar -->
         <div id="sidebar" class="sidebar">
             <button class="menu-icon" onclick="toggleSidebar()">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times close"></i>
             </button>
             <h2>Menu</h2>
             <ul>
                 <li><a href="#">Início</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
                 <li><a href="#">Contato</a></li>
+                <li><a href="#">Nos siga</a></li>
             </ul>
         </div>
         <button onclick="toggleSidebar()"><i class="fas fa-bars home"></i></button>
         <h1>Blog do GUGU</h1>
         <nav>
-            <button onclick="location.href='/login'"><i class="fas fa-users-cog"></i></button>
+            <button onclick="location.href='/login'"><i class="fas fa-user-circle"></i></button>
         </nav>
     </header>
 
@@ -62,37 +82,28 @@
     </main>
 
     <script>
-        // Função para incrementar o contador de likes ao clicar no ícone
-    async function likePost(button, postId) {
-
-        try{
-
-            const response = await fetch(`/posts/${postId}/like`, {
-                method: 'POST',
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao adicionar like');
+        async function likePost(button, postId) {
+            try {
+                const response = await fetch(`/posts/${postId}/like`, { method: 'POST' });
+                if (!response.ok) throw new Error('Erro ao adicionar like');
+                const data = await response.json();
+                const likeCountSpan = button.querySelector('.like-count');
+                likeCountSpan.textContent = data.likes;
+            } catch (err) {
+                console.error('Erro ao adicionar like: ', err);
             }
+        };
 
-            const data = await response.json();
-
-            const likeCountSpan = button.querySelector('.like-count'); // Encontra o contador de likes
-            likeCountSpan.textContent = data.likes;// Incrementa o contador de likes
-        } catch (err) {
-            console.error('Erro ao adicionar like: ', err);
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                sidebar.style.display = 'none';
+            } else {
+                sidebar.classList.add('open');
+                sidebar.style.display = 'block';
+            }
         }
-    };
-
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        if (sidebar.style.width === '250px') {
-            sidebar.style.width = '0';
-        } else {
-            sidebar.style.width = '250px';
-        }
-    };
-
     </script>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
