@@ -7,17 +7,26 @@
     list-style: none;
 }
 
-/* Responsividade sidebar*/
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 250px;
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #ccc;
+        color: #333;
+        top: 50px;
+        right: 0;
+        width: 80%;
     }
 
-    .content {
-        margin-left: 0;
+    .nav-list.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
     }
 }
-
 /* Responsividade Login*/
 @media (max-width: 480px) {
     .login-container {
@@ -63,3 +72,4 @@
         width: 100%; /* Sidebar ocupa 100% da largura em telas pequenas */
     }
 }
+

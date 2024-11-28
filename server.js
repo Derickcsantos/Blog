@@ -37,9 +37,9 @@ const Post = require('./models/post');
 // Dados de usuários (definidos no código)
 const users = [
     { email: 'derickcampossantos1@gmail.com', password: 'Basquete' },
+    { email: 'silvadeoliveira.gustavo35@gmail.com', password: 'Gugutalkshow' },
     { email: 'reserva@gmail.com', password: '123' },
-    { email: 'user3@example.com', password: '5678' },
-    { email: 'user4@example.com', password: '9876' },
+    { email: 'manutencao@suporte.com', password: '000' },
 ];
 
 // Middleware

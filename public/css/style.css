@@ -42,7 +42,7 @@ nav button {
 }
 
 nav button:hover {
-    background-color: #2980b9;
+    background-color: #fff;
     transform: scale(1.05);
 }
 
