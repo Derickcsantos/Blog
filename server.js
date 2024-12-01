@@ -7,9 +7,13 @@ const methodOverride = require('method-override');
 const session = require('express-session');  // Para gerenciar sessões
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Atlas conectado com sucesso!'))
-    .catch(err => console.error('Erro ao conectar ao MongoDB Atlas:', err));
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://Derick:Basquete-1@cluster0.dbu0v.mongodb.net/meublog', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(() => console.log('MongoDB conectado com sucesso!'))
+    .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+
 
 
 const app = express();
@@ -45,6 +49,7 @@ const users = [
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.static(uploadsDir));
 app.use(express.static('public')); // Para servir arquivos estáticos
@@ -57,13 +62,14 @@ app.set('view engine', 'ejs');
 // Rota para a página inicial (agora na rota '/')
 app.get('/', async (req, res) => {
     try {
-        const posts = await Post.find(); // Carrega todos os posts do banco de dados
-        res.render('index', { posts });   // Renderiza 'index.ejs' ao invés de 'blog.ejs'
+        const posts = await Post.find(); // Carrega todos os posts
+        res.render('index', { posts }); // Renderiza o arquivo `index.ejs` e passa os posts
     } catch (err) {
-        console.error(err);
+        console.error('Erro ao carregar os posts do blog:', err);
         res.status(500).send('Erro ao carregar os posts do blog');
     }
 });
+
 
 // Rota para a página administrativa (agora na rota '/admin')
 app.get('/admin', async (req, res) => {
