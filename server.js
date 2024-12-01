@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Conectar ao MongoDB
-mongoose.connect('mongodb://localhost:27017/meublog', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB conectado com sucesso!'))
     .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
@@ -36,7 +36,7 @@ const Post = require('./models/post');
 
 // Dados de usuários (definidos no código)
 const users = [
-    { email: 'derickcampossantos1@gmail.com', password: 'Basquete' },
+    { email: 'derickcampossantos1@gmail.com', password: 'Basquete-1' },
     { email: 'silvadeoliveira.gustavo35@gmail.com', password: 'Gugutalkshow' },
     { email: 'reserva@gmail.com', password: '123' },
     { email: 'manutencao@suporte.com', password: '000' },
