@@ -59,6 +59,7 @@ app.use(methodOverride('_method')); // Para suportar o método DELETE via formul
 app.use(session({ secret: 'secret_key', resave: false, saveUninitialized: true })); // Sessões para login
 
 // Configuração do EJS
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Modelos

@@ -1,18 +1,20 @@
 {
   "name": "bloggugu",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Blog com upload de arquivos e sistema de login básico.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch server.js"
+    "start": "node server.js",
+    "vercel-start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Derick Campos Santos",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
@@ -20,6 +22,5 @@
     "method-override": "^3.0.0",
     "mongoose": "^8.7.0",
     "multer": "^1.4.5-lts.1"
-  },
-  "description": ""
+  }
 }
