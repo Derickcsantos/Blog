@@ -5,6 +5,12 @@ const path = require('path');
 const fs = require('fs');
 const methodOverride = require('method-override');
 const session = require('express-session');  // Para gerenciar sessões
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB Atlas conectado com sucesso!'))
+    .catch(err => console.error('Erro ao conectar ao MongoDB Atlas:', err));
+
 
 const app = express();
 const PORT = 3000;
@@ -25,11 +31,6 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage: storage });
-
-// Conectar ao MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB conectado com sucesso!'))
-    .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
 // Modelos
 const Post = require('./models/post');
